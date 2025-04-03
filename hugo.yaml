@@ -1,0 +1,78 @@
+baseURL: "" #https://example.org/
+languageCode: en-us
+title: Omo's Blog
+theme: PaperMod
+enableInlineShortcodes: true
+enableEmoji: true
+
+params:
+  homeInfoParams:
+    Title: Hello Dear Friend 👋
+    Content: Welcome to my blog! 🤗 Here you'll find cool information about my projects.
+
+  socialIcons:
+    - name: facebook
+      url: https://facebook.com/
+    - name: twitter
+      url: https://twitter.com/
+    - name: github
+      url: https://github.com/    
+    - name: X
+      url: https://x.com
+  cover:
+    linkFullImages: true
+  
+  ShowBreadCrumbs: true
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  comments: true
+  ShowToc: true
+  displayFullLangName: true
+  ShowWordCount: true
+
+frontmatter:
+  date:
+  - :fileModTime # Fetches the date from the content file’s last modification timestamp.
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
+
+menu:
+  main:
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 20
+    - identifier: archives
+      name: Archives
+      url: /archives/
+      weight: 30
+    - identifier: Search
+      name: Search
+      url: /search/
+      weight: 40
+
+markup:
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: true
+    hl_Lines: ""
+    hl_inline: false
+    lineAnchors: ""
+    lineNoStart: 1
+    lineNos: true
+    lineNumbersInTable: true
+    noClasses: false
+    style: fruity #monokai
+    # tabWidth: 4
+    wrapperClass: highlight

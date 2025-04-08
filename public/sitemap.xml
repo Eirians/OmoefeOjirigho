@@ -2,49 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/categories/</loc>
+    <loc>//localhost:1313/categories/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/tags/ga/</loc>
+    <loc>//localhost:1313/tags/ga/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/posts/second/</loc>
+    <loc>//localhost:1313/posts/second/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/tags/marketing/</loc>
+    <loc>//localhost:1313/tags/marketing/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/</loc>
+    <loc>//localhost:1313/</loc>
     <lastmod>2025-03-11T09:13:35-07:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
+    <loc>//localhost:1313/posts/</loc>
     <lastmod>2025-02-13T12:57:29-08:00</lastmod>
   </url><url>
-    <loc>/tags/retail/</loc>
+    <loc>//localhost:1313/tags/retail/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/tags/snowflake/</loc>
+    <loc>//localhost:1313/tags/snowflake/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>//localhost:1313/tags/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/categories/tech/</loc>
+    <loc>//localhost:1313/categories/tech/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/tags/css/</loc>
+    <loc>//localhost:1313/tags/css/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/posts/first/</loc>
+    <loc>//localhost:1313/posts/first/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/tags/html/</loc>
+    <loc>//localhost:1313/tags/html/</loc>
     <lastmod>2025-02-13T12:28:23-08:00</lastmod>
   </url><url>
-    <loc>/search/</loc>
+    <loc>//localhost:1313/search/</loc>
     <lastmod>2025-03-11T09:13:35-07:00</lastmod>
   </url><url>
-    <loc>/archives/</loc>
+    <loc>//localhost:1313/archives/</loc>
     <lastmod>2025-02-13T12:57:29-08:00</lastmod>
   </url>
 </urlset>

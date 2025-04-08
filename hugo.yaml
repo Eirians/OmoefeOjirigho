@@ -16,9 +16,11 @@ params:
     - name: twitter
       url: https://twitter.com/
     - name: github
-      url: https://github.com/    
+      url: https://github.com/Eirians    
     - name: X
       url: https://x.com
+    - name: X
+      url: https://linkedin.com/in/omoefe-ojirigho
   cover:
     linkFullImages: true
   

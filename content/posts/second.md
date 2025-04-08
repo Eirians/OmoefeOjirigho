@@ -159,8 +159,8 @@ The db Schema, tables, and views were created as seen below:
 
 ![image](/img/GA4_DB.png#center)
 
-The tableau draft view is seen below:
+The tableau dashboard draft is seen below:
 
-![image](/img/Ecom.png#center)
+![image](/img/Ecom_kpi.png#center)
 
 This was tweaked according to user requirement and deployed.

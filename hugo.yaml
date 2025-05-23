@@ -7,7 +7,7 @@ enableEmoji: true
 
 params:
   homeInfoParams:
-    Title: Hello Dear Friend 👋
+    Title: Hello Dear Friend 👋 Hello! &#x1f44b;
     Content: Welcome to my blog! 🤗 Here you'll find cool information about my projects.
 
   socialIcons:

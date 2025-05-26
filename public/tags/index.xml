@@ -16,10 +16,24 @@
       <description></description>
     </item>
     <item>
+      <title>Machine Learning</title>
+      <link>//localhost:1313/tags/machine-learning/</link>
+      <pubDate>Thu, 13 Feb 2025 12:28:23 -0800</pubDate>
+      <guid>//localhost:1313/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Marketing</title>
       <link>//localhost:1313/tags/marketing/</link>
       <pubDate>Thu, 13 Feb 2025 12:28:23 -0800</pubDate>
       <guid>//localhost:1313/tags/marketing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>//localhost:1313/tags/python/</link>
+      <pubDate>Thu, 13 Feb 2025 12:28:23 -0800</pubDate>
+      <guid>//localhost:1313/tags/python/</guid>
       <description></description>
     </item>
     <item>
@@ -37,17 +51,17 @@
       <description></description>
     </item>
     <item>
-      <title>Css</title>
-      <link>//localhost:1313/tags/css/</link>
+      <title>Tableau</title>
+      <link>//localhost:1313/tags/tableau/</link>
       <pubDate>Thu, 13 Feb 2025 12:28:23 -0800</pubDate>
-      <guid>//localhost:1313/tags/css/</guid>
+      <guid>//localhost:1313/tags/tableau/</guid>
       <description></description>
     </item>
     <item>
-      <title>Html</title>
-      <link>//localhost:1313/tags/html/</link>
+      <title>TabPy</title>
+      <link>//localhost:1313/tags/tabpy/</link>
       <pubDate>Thu, 13 Feb 2025 12:28:23 -0800</pubDate>
-      <guid>//localhost:1313/tags/html/</guid>
+      <guid>//localhost:1313/tags/tabpy/</guid>
       <description></description>
     </item>
   </channel>

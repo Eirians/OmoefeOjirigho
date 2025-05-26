@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
 <title>First | Omo&#39;s Blog</title>
-<meta name="keywords" content="Css, Html">
+<meta name="keywords" content="Tableau, Machine Learning, TabPy, Python">
 <meta name="description" content="Omo Portfolio description">
 <meta name="author" content="">
 <link rel="canonical" href="//localhost:1313/posts/first/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css" integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="sha256-bammPSWpYIvKL3&#43;QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as="style">
 <link rel="icon" href="//localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
@@ -132,44 +132,217 @@
     <div class="post-description">
       Omo Portfolio description
     </div>
-    <div class="post-meta"><span title='2025-04-01 15:03:52.5370632 -0700 PDT'>April 1, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;6 words
+    <div class="post-meta"><span title='2025-05-26 11:20:47.2353454 -0700 PDT'>May 26, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;858 words&nbsp;|&nbsp;<a href="https://github.com/figuremout/figuremout.github.io/tree/main/content/posts/first.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
-<figure class="entry-cover"><a href="//localhost:1313/img/Logo_new.png" target="_blank"
-            rel="noopener noreferrer"><img loading="eager" src="//localhost:1313/img/Logo_new.png" alt="This"></a>
-        <p></p>
+<figure class="entry-cover">
+        <a href="//localhost:1313/img/Tabpy%20image.png" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="//localhost:1313/img/Tabpy%20image.png" alt="This">
+        </a>
+        <figcaption></figcaption>
 </figure>
 
-  <div class="post-content"><div class="highlight"><div class="chroma">
+  <div class="post-content"><p>This project is one of the data science challenge posted on Kaggle and I decided to jump on it. It is about creating a predictive macine Learning model that predicts which passengers are likely to survive the titanic Shipwreck.
+We all know the story behind the famous titanic ship. But just incase you don&rsquo;t know the story behind Titanic, let me give you a brief gist 😉.
+Titanic was the largest ship afloat at the time of its completion in 1912. Designed to carry 2,435 passengers plus roughly 900 crew. Passengers were divided into three classes, reflecting the social stratification of the time.
+Titanic set sail from Southampton, England, on April 10, 1912, bound for New York City. It stopped briefly in Cherbourg, France, and Queenstown (now Cobh), Ireland, to pick up additional passengers.
+Titanic’s wireless operators received multiple iceberg warnings from other ships. Although, the crew was aware of ice in the vicinity, they maintained speed hoping to arrive earlier.
+On the night of April 14, 1912, at around 11:40 p.m. ship’s time, despite evasive maneuvers, Titanic scraped along the iceberg’s starboard side causing punctures below the waterline. Five of the ship’s watertight compartments were compromised.
+Over about two hours and forty minutes, the bow sank deeper until the stern rose out of the water. An estimated 1500-1517. A disproportionate number of third-class passengers and crew lost their lives compared to first-class passengers, reflecting class-based access to lifeboats. Around 705 people survived. Many were taken aboard the Cunard liner Carpathia, which arrived at the scene after receiving Titanic’s distress signals.</p>
+<p>Let&rsquo;s dive into the brief steps of how I handled this project using anaconda jupyter notebook and tableau. We will get the data, explore, process, and build the ML models. We will then depoly the model using TabPy function and see the results in tableau.
+You can access the datasource here - <a href="https://www.kaggle.com/c/titanic">Titanic</a> dataset on Kaggle. The demographic characteristics are the independent variables.</p>
+<p>step 1: I got data from kaggle.
+Step 2: I wrote the python code as seen below</p>
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Hello, Hugo!&#34;</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Importing the libraries</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">tabpy_client</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">tabpy_client.client</span> <span class="kn">import</span> <span class="n">Client</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Loading the dataset</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;C:/Users/Documents/portfolio/train.csv&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;C:/Users/Documents/portfolio/test.csv&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Dealing with missing values in the Age variable</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mean</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&#34;Age&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&#34;Age&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>  <span class="c1"># Use train_df.std() for consistency</span>
+</span></span><span class="line"><span class="cl">    <span class="n">is_null</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&#34;Age&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Compute random numbers between mean, std, and is_null</span>
+</span></span><span class="line"><span class="cl">    <span class="n">rand_age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">mean</span> <span class="o">-</span> <span class="n">std</span><span class="p">,</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">std</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">is_null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Fill NAN values in Age with the random numbers generated</span>
+</span></span><span class="line"><span class="cl">    <span class="n">age_slice</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&#34;Age&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">age_slice</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">age_slice</span><span class="p">)]</span> <span class="o">=</span> <span class="n">rand_age</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dataset</span><span class="p">[</span><span class="s2">&#34;Age&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">age_slice</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dataset</span><span class="p">[</span><span class="s2">&#34;Age&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&#34;Age&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define age bins and labels</span>
+</span></span><span class="line"><span class="cl"><span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Apply pd.cut to categorize Age variable</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Encoding the categorical labels</span>
+</span></span><span class="line"><span class="cl"><span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;Fare&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;Fare&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="c1"># Train the Random Forest Model</span>
+</span></span><span class="line"><span class="cl"><span class="n">random_forest</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="s1">&#39;SibSp&#39;</span><span class="p">,</span> <span class="s1">&#39;Parch&#39;</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">Y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">random_forest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define and Deploy the Function</span>
+</span></span><span class="line"><span class="cl"><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s1">&#39;http://localhost:9004/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">titanic_survival_predictor</span><span class="p">(</span><span class="n">_arg1</span><span class="p">,</span> <span class="n">_arg2</span><span class="p">,</span> <span class="n">_arg3</span><span class="p">,</span> <span class="n">_arg4</span><span class="p">,</span> <span class="n">_arg5</span><span class="p">,</span> <span class="n">_arg6</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Get the new app&#39;s data in a dictionary</span>
+</span></span><span class="line"><span class="cl">    <span class="n">row</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="n">_arg1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="s1">&#39;Sex&#39;</span><span class="p">:</span> <span class="n">_arg2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="s1">&#39;Pclass&#39;</span><span class="p">:</span> <span class="n">_arg3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="s1">&#39;Fare&#39;</span><span class="p">:</span> <span class="n">_arg4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="s1">&#39;SibSp&#39;</span><span class="p">:</span> <span class="n">_arg5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="s1">&#39;Parch&#39;</span><span class="p">:</span> <span class="n">_arg6</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Convert it into a DataFrame</span>
+</span></span><span class="line"><span class="cl">    <span class="n">test_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">row</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Predict the survival and death probabilities</span>
+</span></span><span class="line"><span class="cl">    <span class="n">predprob_survival</span> <span class="o">=</span> <span class="n">random_forest</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Return only the survival probability</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">[</span><span class="n">probability</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">probability</span> <span class="ow">in</span> <span class="n">predprob_survival</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">client</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="s1">&#39;titanic_survival_predictor&#39;</span><span class="p">,</span> <span class="n">titanic_survival_predictor</span><span class="p">,</span> <span class="s1">&#39;Predicts survival probability&#39;</span><span class="p">,</span> <span class="n">override</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><p>step 3: I installed Tabpy by following the instructions on the tableau resources list below. This step is necessary to help tableau understand your script and correctly interprete it.</p>
+<p>Resources :</p>
+<ul>
+<li><a href="https://www.tableau.com/developer/learning/bring-your-own-machine-learning-models-tableau-analytics-extensions-api">https://www.tableau.com/developer/learning/bring-your-own-machine-learning-models-tableau-analytics-extensions-api</a></li>
+<li><a href="https://help.tableau.com/current/server/en-us/config_r_tabpy.htm?_gl=1">https://help.tableau.com/current/server/en-us/config_r_tabpy.htm?_gl=1</a><em>1nb1q1a</em>_ga<em>OTA3NDY4OTk5LjE3MDcyNDI5NzM.</em>_ga_8YLN0SNXVS*MTczNzA1NzMzMy4yNzMuMS4xNzM3MDU4NTI5LjAuMC4w</li>
+</ul>
+<p>follow the instruction in this link below to connect Tableau Desktop and configure the analytics extension</p>
+<ul>
+<li><a href="https://help.tableau.com/current/pro/desktop/en-us/r_connection_manage.htm">https://help.tableau.com/current/pro/desktop/en-us/r_connection_manage.htm</a></li>
+<li><a href="https://tableau.github.io/TabPy/docs/server-install.html">https://tableau.github.io/TabPy/docs/server-install.html</a></li>
+<li><a href="https://www.tableau.com/blog/building-advanced-analytics-applications-tabpy?_gl=1">https://www.tableau.com/blog/building-advanced-analytics-applications-tabpy?_gl=1</a><em>trnz20</em>_ga<em>OTA3NDY4OTk5LjE3MDcyNDI5NzM.</em>_ga_8YLN0SNXVS*MTczNzA2NTIyNi4yNzQuMS4xNzM3MDY1MjQyLjAuMC4w&amp;_ga=2.10878772.183077179.1736784848-907468999.1707242973</li>
+<li>The icons used were sourced from <a href="https://www.flaticon.com/">flaticons.com</a></li>
+</ul>
+<p>step 4: Using jupyter IDE, I launched anaconda prompt after installing all the necessary libraries/packages and ran the command &ldquo;tabpy&rdquo; this will start listening to the port as seen below</p>
+<p><img alt="image" loading="lazy" src="/img/Anaconda_cmd.png#center"></p>
+<p>Step 5: Launch tableau, depending on the version you are using, hover on help, Go to Settings → Extensions and input parameters as seen below then click the test connection button</p>
+<p><img alt="image" loading="lazy" src="/img/Analytics_ext.png#center"></p>
+<p>step 6: Connect to the trained data source and write the script for the analysis. The tableau script for Death and survival prediction was written as in the image below :</p>
+<p><img alt="image" loading="lazy" src="/img/Death.png#center"></p>
+<p><img alt="image" loading="lazy" src="/img/Survival.png#center"></p>
+<p>This is the simple dashboard draft :</p>
+<p><img alt="image" loading="lazy" src="/img/Titanic_dashboard.jpg#center"></p>
+<p>Here is also a short display of how the dashboard functions while in use</p>
+<div style="text-align:center;">
+  <video controls width="720">
+    <source src="/videos/Titanic-Pres.mp4" type="video/mp4">
+    Functionality of the dashboard
+  </video>
 </div>
+
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="//localhost:1313/tags/css/">Css</a></li>
-      <li><a href="//localhost:1313/tags/html/">Html</a></li>
+      <li><a href="//localhost:1313/tags/tableau/">Tableau</a></li>
+      <li><a href="//localhost:1313/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="//localhost:1313/tags/tabpy/">TabPy</a></li>
+      <li><a href="//localhost:1313/tags/python/">Python</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="//localhost:1313/posts/second/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>GA to Snowflake</span>
-  </a>
-  <a class="next" href="//localhost:1313/archives/">
+  <a class="next" href="//localhost:1313/posts/second/">
     <span class="title">Next »</span>
     <br>
-    <span>Archives</span>
+    <span>GA to Snowflake</span>
   </a>
 </nav>
 
@@ -177,7 +350,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share First on x"
-            href="https://x.com/intent/tweet/?text=First&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f&amp;hashtags=Css%2cHtml">
+            href="https://x.com/intent/tweet/?text=First&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f&amp;hashtags=Tableau%2cMachineLearning%2cTabPy%2cPython">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />

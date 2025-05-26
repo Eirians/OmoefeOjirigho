@@ -33,6 +33,10 @@ params:
   ShowToc: true
   displayFullLangName: true
   ShowWordCount: true
+  editPost:
+    URL: "https://github.com/figuremout/figuremout.github.io/tree/main/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
 
 frontmatter:
   date:
@@ -78,3 +82,8 @@ markup:
     style: fruity #monokai
     # tabWidth: 4
     wrapperClass: highlight
+  goldmark:
+    renderer:
+      unsafe: true
+security:
+  enableInlineShortcodes: true      

@@ -7,7 +7,7 @@ cover:
     image: img/GA_SF.png # image path/url
     alt: "This" # alt text
     caption: " " # display caption under cover
-tags: ["GA", "Snowflake", "Marketing","Retail"]
+tags: ["GA", "Snowflake", "Marketing", "Retail"]
 categories: ["Tech"]
 
 ---

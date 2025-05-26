@@ -136,5 +136,3 @@ Here is also a short display of how the dashboard functions while in use
     Functionality of the dashboard
   </video>
 </div>
-
-{{< audio src=/audio/videos/Titanic-Pres.mp4>}}

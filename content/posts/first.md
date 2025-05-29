@@ -11,20 +11,23 @@ tags: ["Tableau", "Machine Learning", "TabPy", "Python"]
 categories: ["Tech"]
 
 ---
-This project is one of the data science challenge posted on Kaggle and I decided to jump on it. It is about creating a predictive macine Learning model that predicts which passengers are likely to survive the titanic Shipwreck.
+ 
+<div style="text-align: justify; max-width: 700px; margin: auto;">
+ This project is one of the data science challenge posted on Kaggle and I decided to jump on it. It is about creating a predictive macine Learning model that predicts which passengers are likely to survive the titanic Shipwreck.
 We all know the story behind the famous titanic ship. But just incase you don't know the story behind Titanic, let me give you a brief gist 😉.
 Titanic was the largest ship afloat at the time of its completion in 1912. Designed to carry 2,435 passengers plus roughly 900 crew. Passengers were divided into three classes, reflecting the social stratification of the time.
 Titanic set sail from Southampton, England, on April 10, 1912, bound for New York City. It stopped briefly in Cherbourg, France, and Queenstown (now Cobh), Ireland, to pick up additional passengers.
 Titanic’s wireless operators received multiple iceberg warnings from other ships. Although, the crew was aware of ice in the vicinity, they maintained speed hoping to arrive earlier.
 On the night of April 14, 1912, at around 11:40 p.m. ship’s time, despite evasive maneuvers, Titanic scraped along the iceberg’s starboard side causing punctures below the waterline. Five of the ship’s watertight compartments were compromised.
-Over about two hours and forty minutes, the bow sank deeper until the stern rose out of the water. An estimated 1500-1517. A disproportionate number of third-class passengers and crew lost their lives compared to first-class passengers, reflecting class-based access to lifeboats. Around 705 people survived. Many were taken aboard the Cunard liner Carpathia, which arrived at the scene after receiving Titanic’s distress signals. 
-
+Over about two hours and forty minutes, the bow sank deeper until the stern rose out of the water. An estimated 1500-1517. A disproportionate number of third-class passengers and crew lost their lives compared to first-class passengers, reflecting class-based access to lifeboats. Around 705 people survived. Many were taken aboard the Cunard liner Carpathia, which arrived at the scene after receiving Titanic’s distress signals.
 Let's dive into the brief steps of how I handled this project using anaconda jupyter notebook and tableau. We will get the data, explore, process, and build the ML models. We will then depoly the model using TabPy function and see the results in tableau.
 You can access the datasource here - [Titanic](https://www.kaggle.com/c/titanic) dataset on Kaggle. The demographic characteristics are the independent variables.
+</div>
 
 
 step 1: I got data from kaggle.
-Step 2: I wrote the python code as seen below
+
+Step 2: I wrote the python code as seen below:
 
 ```python
 # Importing the libraries

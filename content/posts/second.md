@@ -2,7 +2,7 @@
 date: '2025-02-13T12:28:23-08:00'
 draft: false
 title: 'GA to Snowflake'
-description: Omo Portfolio description
+description: The requirement(s) was to build an Ecommerce dashboard with data sources from Shopify, Google Analytics, and local database. #Omo Portfolio description
 cover:
     image: img/GA_SF.png # image path/url
     alt: "This" # alt text
@@ -11,25 +11,26 @@ tags: ["GA", "Snowflake", "Marketing", "Retail"]
 categories: ["Tech"]
 
 ---
+<div style="text-align: justify; max-width: 700px; margin: auto;">
 
-This project was an interesting one. The requirement(s) was to build an Ecommerce dashboard with data sources from Shopify, Google Analytics, and local database. 
-
-The tools used for the project are listed below:
+This project was an interesting one. The tools used for the project are listed below:
 - Jupyter 
 - Google console (console.cloud.google)
 - Ga-dev-tools (ga-dev-tools)
-- Snowflake
+- Snowflake (app.snowflake.com)
 
 I will give a brief summary of the steps involved in the project from start to finish.
 - Step 1 : I was to reveiw the front end of these applications and identify the key metrics that were needed.
 - Step 2 : After identifying these data sources, a plan was drafted on how to get these data out of the applications. The data was gotten from the shopify api, google analytics api 4 (GA4), oracle, and snowflake databases.
-- Step 3 : I connected to the GA4 developers console (https://console.cloud.google.com/) to create my method of authentication. I used Oauth 2.0 client IDs for my authentication since I didn't have a service account and running this on my pc. 
+- Step 3 : I connected to the GA4 developers [console](https://console.cloud.google.com/) to create my method of authentication. I used Oauth 2.0 client IDs for my authentication since I didn't have a service account and running this on my pc.     
 The basic steps are :
     - Go to the Google Cloud Console (have the property id ready).
     - Navigate to APIs & Services > Credentials.
     - Click on Create Credentials and select OAuth 2.0 Client IDs.
     - Configure the consent screen and download the JSON file containing your client ID and client secret. "Don't forget to Set the default Ips in the redirect URIs 🙂." 
     - Next, run this script below to generate your access token. This will automatically download on the specified path.
+</div>
+
 ```python
 import os
 import json
@@ -65,21 +66,23 @@ def get_credentials():
 credentials = get_credentials()
 client = BetaAnalyticsDataClient(credentials=credentials)
 ```
+<div style="text-align: justify; max-width: 700px; margin: auto;">
 * Note: If yor python environment is having outdated widgets especially using jupyter, this could cause some errors.
 - Step 4 : I used the dev tools query explorer to select the dimensions and metrics I needed and ran the request to see the response. 
 - Step 5 : I wrote my script and kept modifying until completed. This script connected to snowflake; extracted, transformed some fields, and Loaded data into the already created snowflake table. After these, next is to create a task for daily data update. Amongst the multiple ways to update data, I opted for windows task scheduler. I found this option more convenient considering the resources I have available.
 The snowflake connector needs to be installed by running.
+</div>
 
 ```python
 pip install snowflake-connector-python
 ```
-There's also need to setup the following : 
-    - User:
-    - Password:
-    - Account:
-    - Warehouse:
-    - Database:
-    - Schema: 
+There's also need to setup the following :   
+    - User:  
+    - Password:  
+    - Account:  
+    - Warehouse:  
+    - Database:  
+    - Schema:  
 
 * Note: GA4 default limit is 10000 rows. you can use pagination (limit and offset) to get more rows. 
 
@@ -152,7 +155,7 @@ df["EVENT_DATE"] = pd.to_datetime(df["EVENT_DATE"], format="%Y%m%d").dt.strftime
 # Generate composite key
 ```
 
-- Step 6 : Get data from shopify using airbyte. For step by step instructions, consult the documentation here (https://docs.airbyte.com/integrations/sources/shopify/)
+- Step 6 : Get data from shopify using airbyte. For step by step instructions, consult the documentation here [airbyte.com](https://docs.airbyte.com/integrations/sources/shopify/).
 - Step 7 : Create data models on snowflake with dimensions and metrics using joins and unions where needed in separate views, connected tableau to the views, designed dashboard, and published to Tableau Online.
 
 The db Schema, tables, and views were created as seen below:

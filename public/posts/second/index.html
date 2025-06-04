@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>GA to Snowflake | Omo&#39;s Blog</title>
 <meta name="keywords" content="GA, Snowflake, Marketing, Retail">
-<meta name="description" content="Omo Portfolio description">
+<meta name="description" content="The requirement(s) was to build an Ecommerce dashboard with data sources from Shopify, Google Analytics, and local database.">
 <meta name="author" content="">
 <link rel="canonical" href="//localhost:1313/posts/second/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="sha256-bammPSWpYIvKL3&#43;QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as="style">
@@ -56,6 +56,30 @@
 
     </style>
 </noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+
+          
+          
+          delimiters: [
+
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+
+
 </head>
 
 <body class="" id="top">
@@ -130,9 +154,9 @@
       GA to Snowflake
     </h1>
     <div class="post-description">
-      Omo Portfolio description
+      The requirement(s) was to build an Ecommerce dashboard with data sources from Shopify, Google Analytics, and local database.
     </div>
-    <div class="post-meta"><span title='2025-05-26 10:16:48.6249149 -0700 PDT'>May 26, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;868 words&nbsp;|&nbsp;<a href="https://github.com/figuremout/figuremout.github.io/tree/main/content/posts/second.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2025-06-02 14:32:06.7937219 -0700 PDT'>June 2, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;853 words&nbsp;|&nbsp;<a href="https://github.com/figuremout/figuremout.github.io/tree/main/content/posts/second.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -143,19 +167,19 @@
         <figcaption></figcaption>
 </figure>
 
-  <div class="post-content"><p>This project was an interesting one. The requirement(s) was to build an Ecommerce dashboard with data sources from Shopify, Google Analytics, and local database.</p>
-<p>The tools used for the project are listed below:</p>
+  <div class="post-content"><div style="text-align: justify; max-width: 700px; margin: auto;">
+<p>This project was an interesting one. The tools used for the project are listed below:</p>
 <ul>
 <li>Jupyter</li>
 <li>Google console (console.cloud.google)</li>
 <li>Ga-dev-tools (ga-dev-tools)</li>
-<li>Snowflake</li>
+<li>Snowflake (app.snowflake.com)</li>
 </ul>
 <p>I will give a brief summary of the steps involved in the project from start to finish.</p>
 <ul>
 <li>Step 1 : I was to reveiw the front end of these applications and identify the key metrics that were needed.</li>
 <li>Step 2 : After identifying these data sources, a plan was drafted on how to get these data out of the applications. The data was gotten from the shopify api, google analytics api 4 (GA4), oracle, and snowflake databases.</li>
-<li>Step 3 : I connected to the GA4 developers console (<a href="https://console.cloud.google.com/">https://console.cloud.google.com/</a>) to create my method of authentication. I used Oauth 2.0 client IDs for my authentication since I didn&rsquo;t have a service account and running this on my pc.
+<li>Step 3 : I connected to the GA4 developers <a href="https://console.cloud.google.com/">console</a> to create my method of authentication. I used Oauth 2.0 client IDs for my authentication since I didn&rsquo;t have a service account and running this on my pc.  <br>
 The basic steps are :
 <ul>
 <li>Go to the Google Cloud Console (have the property id ready).</li>
@@ -166,6 +190,7 @@ The basic steps are :
 </ul>
 </li>
 </ul>
+</div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -238,14 +263,12 @@ The basic steps are :
 </span></span><span class="line"><span class="cl"><span class="n">client</span> <span class="o">=</span> <span class="n">BetaAnalyticsDataClient</span><span class="p">(</span><span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>Note: If yor python environment is having outdated widgets especially using jupyter, this could cause some errors.</li>
-</ul>
-<ul>
-<li>Step 4 : I used the dev tools query explorer to select the dimensions and metrics I needed and ran the request to see the response.</li>
-<li>Step 5 : I wrote my script and kept modifying until completed. This script connected to snowflake; extracted, transformed some fields, and Loaded data into the already created snowflake table. After these, next is to create a task for daily data update. Amongst the multiple ways to update data, I opted for windows task scheduler. I found this option more convenient considering the resources I have available.
-The snowflake connector needs to be installed by running.</li>
-</ul>
+</div><div style="text-align: justify; max-width: 700px; margin: auto;">
+* Note: If yor python environment is having outdated widgets especially using jupyter, this could cause some errors.
+- Step 4 : I used the dev tools query explorer to select the dimensions and metrics I needed and ran the request to see the response. 
+- Step 5 : I wrote my script and kept modifying until completed. This script connected to snowflake; extracted, transformed some fields, and Loaded data into the already created snowflake table. After these, next is to create a task for daily data update. Amongst the multiple ways to update data, I opted for windows task scheduler. I found this option more convenient considering the resources I have available.
+The snowflake connector needs to be installed by running.
+</div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -254,12 +277,12 @@ The snowflake connector needs to be installed by running.</li>
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">snowflake</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>There&rsquo;s also need to setup the following :
-- User:
-- Password:
-- Account:
-- Warehouse:
-- Database:
+</div><p>There&rsquo;s also need to setup the following :<br>
+- User:<br>
+- Password:<br>
+- Account:<br>
+- Warehouse:<br>
+- Database:<br>
 - Schema:</p>
 <ul>
 <li>Note: GA4 default limit is 10000 rows. you can use pagination (limit and offset) to get more rows.</li>
@@ -400,7 +423,7 @@ The snowflake connector needs to be installed by running.</li>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
-<li>Step 6 : Get data from shopify using airbyte. For step by step instructions, consult the documentation here (<a href="https://docs.airbyte.com/integrations/sources/shopify/">https://docs.airbyte.com/integrations/sources/shopify/</a>)</li>
+<li>Step 6 : Get data from shopify using airbyte. For step by step instructions, consult the documentation here <a href="https://docs.airbyte.com/integrations/sources/shopify/">airbyte.com</a>.</li>
 <li>Step 7 : Create data models on snowflake with dimensions and metrics using joins and unions where needed in separate views, connected tableau to the views, designed dashboard, and published to Tableau Online.</li>
 </ul>
 <p>The db Schema, tables, and views were created as seen below:</p>
@@ -420,15 +443,10 @@ The snowflake connector needs to be installed by running.</li>
       <li><a href="//localhost:1313/tags/retail/">Retail</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="//localhost:1313/posts/first/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>First</span>
-  </a>
-  <a class="next" href="//localhost:1313/archives/">
+  <a class="next" href="//localhost:1313/posts/first/">
     <span class="title">Next »</span>
     <br>
-    <span>Archives</span>
+    <span>Python to Tabpy - Tableau</span>
   </a>
 </nav>
 

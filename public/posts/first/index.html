@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>First | Omo&#39;s Blog</title>
+<title>Python to Tabpy - Tableau | Omo&#39;s Blog</title>
 <meta name="keywords" content="Tableau, Machine Learning, TabPy, Python">
 <meta name="description" content="Omo Portfolio description">
 <meta name="author" content="">
@@ -56,6 +56,30 @@
 
     </style>
 </noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+
+          
+          
+          delimiters: [
+
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+
+
 </head>
 
 <body class="" id="top">
@@ -127,12 +151,12 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      First
+      Python to Tabpy - Tableau
     </h1>
     <div class="post-description">
       Omo Portfolio description
     </div>
-    <div class="post-meta"><span title='2025-05-27 14:38:11.0339606 -0700 PDT'>May 27, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;858 words&nbsp;|&nbsp;<a href="https://github.com/figuremout/figuremout.github.io/tree/main/content/posts/first.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2025-06-02 14:18:20.6362449 -0700 PDT'>June 2, 2025</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;1424 words&nbsp;|&nbsp;<a href="https://github.com/figuremout/figuremout.github.io/tree/main/content/posts/first.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -154,8 +178,80 @@ Over about two hours and forty minutes, the bow sank deeper until the stern rose
 Let's dive into the brief steps of how I handled this project using anaconda jupyter notebook and tableau. We will get the data, explore, process, and build the ML models. We will then depoly the model using TabPy function and see the results in tableau.
 You can access the datasource here - [Titanic](https://www.kaggle.com/c/titanic) dataset on Kaggle. The demographic characteristics are the independent variables.
 </div>
-<p>step 1: I got data from kaggle.</p>
-<p>Step 2: I wrote the python code as seen below:</p>
+<p>Step 1: I got data from Kaggle. You can access it here You can download the dataset <a href="/files/train.csv">here</a>.
+<br>
+I performed some basic data exploration steps to review the data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img alt="image" loading="lazy" src="/img/info.png#left"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img alt="image" loading="lazy" src="/img/describe.png#center"></p>
+<p>From this result, while other feature counts are 891, the count of age is 714 depicting missing data. 38% of the passengers out of the training set survived the titanic (mean - 0.38) with ages ranging from 0.4 to 8.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img alt="image" loading="lazy" src="/img/head.png#center"></p>
+<p>There is need to convert most features to numeric so the model can process the features accurately.</p>
+<p>To take a deeper look at the missing data, I ran this short code</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"> <span class="n">Calculate</span> <span class="n">missing</span> <span class="n">values</span> <span class="n">per</span> <span class="n">column</span>
+</span></span><span class="line"><span class="cl"><span class="n">missing_total</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calculate percentage of missing values</span>
+</span></span><span class="line"><span class="cl"><span class="n">missing_percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">missing_total</span> <span class="o">/</span> <span class="n">train_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Combine into a single DataFrame</span>
+</span></span><span class="line"><span class="cl"><span class="n">missing_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Total&#39;</span><span class="p">:</span> <span class="n">missing_total</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;%&#39;</span><span class="p">:</span> <span class="n">missing_percent</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Sort by total missing values and show top 5</span>
+</span></span><span class="line"><span class="cl"><span class="n">missing_data_sorted</span> <span class="o">=</span> <span class="n">missing_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Total&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">missing_data_sorted</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img alt="image" loading="lazy" src="/img/missingdata.png#left"></p>
+<p>To clean the data and fill missing columns, I used the part of the code block <strong># Fill NAN values in Age with the random numbers generated</strong> in step 2</p>
+<p>The result
+<img alt="image" loading="lazy" src="/img/Cleaned.png#left"></p>
+<p>Step 2: There is need to create and deploy the function that can take the selected parameter values in Tableau as input and return the probability of a person surviving Titanic. I wrote the final Python code as seen below:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -300,32 +396,111 @@ You can access the datasource here - [Titanic](https://www.kaggle.com/c/titanic)
 </span></span><span class="line"><span class="cl"><span class="n">client</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="s1">&#39;titanic_survival_predictor&#39;</span><span class="p">,</span> <span class="n">titanic_survival_predictor</span><span class="p">,</span> <span class="s1">&#39;Predicts survival probability&#39;</span><span class="p">,</span> <span class="n">override</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>step 3: I installed Tabpy by following the instructions on the tableau resources list below. This step is necessary to help tableau understand your script and correctly interprete it.</p>
+</div><p>There is need to check the accuracy of the model built. Although, it is not the focus of the post but I will show a brief way of checking and interpreting the results.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define features and labels</span>
+</span></span><span class="line"><span class="cl"><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="s1">&#39;SibSp&#39;</span><span class="p">,</span> <span class="s1">&#39;Parch&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Split the data (e.g., 80% train, 20% test)</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Train the model on training set</span>
+</span></span><span class="line"><span class="cl"><span class="n">random_forest</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">random_forest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Predict on validation set</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_pred</span> <span class="o">=</span> <span class="n">random_forest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Evaluate accuracy</span>
+</span></span><span class="line"><span class="cl"><span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Optional: Confusion matrix and classification report</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Confusion Matrix:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Classification Report:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The result is as below:</p>
+<p><img alt="image" loading="lazy" src="/img/Accuracy.png#left"></p>
+<p>The formula for accuracy is
+$$
+Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+$$</p>
+<p>TP: True Positives (Survived correctly predicted as survived)</p>
+<p>TN: True Negatives (Did not survive correctly predicted as not survived)</p>
+<p>FP: False Positives  (Survived incorrectly predicted as not survived)</p>
+<p>FN: False Negatives  (Did not survive incorrectly predicted as survived)</p>
+<p>Now, let&rsquo;s understand the accuracy results.</p>
+<p>The model is <strong>81.6%</strong> accurate which is not perfect but reliable.</p>
+<p>To know where the error occured, the confusion matrix function will diagnose our model.<br>
+As seen, 89 True Negative and 16 False Positives mean the model predicted 89 deaths correctly and 16 deaths incorrectly.
+The 17 False Negatives and 57 True Positives means the model predicted 17 deaths incorrectly and 57 survivors correctly.</p>
+<p><strong>To put it plainly, 89 deaths and 57 survivors were correctly predicted while 17 survivors and 16 deaths were inaccurately predicted.</strong><br>
+There are several ways to perfect the model while avoiding overfitting. I might cover this in another project 🙂.</p>
+<p>Step 3: I installed Tabpy by following the instructions on the tableau resources list below. This step is necessary to help tableau understand your script and correctly interprete it.</p>
+<p>Follow the instructions in the links below to connect Tableau Desktop and configure the analytics extension</p>
+<ul>
+<li><a href="https://help.tableau.com/current/pro/desktop/en-us/r_connection_manage.htm">Configure analytics extension</a></li>
+<li><a href="https://tableau.github.io/TabPy/docs/server-install.html">TabPy Installation</a></li>
+<li><a href="https://www.tableau.com/blog/building-advanced-analytics-applications-tabpy?_gl=1*trnz20*_ga*OTA3NDY4OTk5LjE3MDcyNDI5NzM.*_ga_8YLN0SNXVS*MTczNzA2NTIyNi4yNzQuMS4xNzM3MDY1MjQyLjAuMC4w&amp;_ga=2.10878772.183077179.1736784848-907468999.1707242973">How To build advanced analytics</a></li>
+</ul>
 <p>Resources :</p>
 <ul>
-<li><a href="https://www.tableau.com/developer/learning/bring-your-own-machine-learning-models-tableau-analytics-extensions-api">https://www.tableau.com/developer/learning/bring-your-own-machine-learning-models-tableau-analytics-extensions-api</a></li>
-<li><a href="https://help.tableau.com/current/server/en-us/config_r_tabpy.htm?_gl=1">https://help.tableau.com/current/server/en-us/config_r_tabpy.htm?_gl=1</a><em>1nb1q1a</em>_ga<em>OTA3NDY4OTk5LjE3MDcyNDI5NzM.</em>_ga_8YLN0SNXVS*MTczNzA1NzMzMy4yNzMuMS4xNzM3MDU4NTI5LjAuMC4w</li>
+<li><a href="https://www.tableau.com/developer/learning/bring-your-own-machine-learning-models-tableau-analytics-extensions-api">BYOM Tableau guide</a></li>
+<li><a href="https://help.tableau.com/current/server/en-us/config_r_tabpy.htm?_gl=1*1nb1q1a*_ga*OTA3NDY4OTk5LjE3MDcyNDI5NzM.*_ga_8YLN0SNXVS*MTczNzA1NzMzMy4yNzMuMS4xNzM3MDU4NTI5LjAuMC4w">Analytics Extensions settings</a></li>
 </ul>
-<p>follow the instruction in this link below to connect Tableau Desktop and configure the analytics extension</p>
-<ul>
-<li><a href="https://help.tableau.com/current/pro/desktop/en-us/r_connection_manage.htm">https://help.tableau.com/current/pro/desktop/en-us/r_connection_manage.htm</a></li>
-<li><a href="https://tableau.github.io/TabPy/docs/server-install.html">https://tableau.github.io/TabPy/docs/server-install.html</a></li>
-<li><a href="https://www.tableau.com/blog/building-advanced-analytics-applications-tabpy?_gl=1">https://www.tableau.com/blog/building-advanced-analytics-applications-tabpy?_gl=1</a><em>trnz20</em>_ga<em>OTA3NDY4OTk5LjE3MDcyNDI5NzM.</em>_ga_8YLN0SNXVS*MTczNzA2NTIyNi4yNzQuMS4xNzM3MDY1MjQyLjAuMC4w&amp;_ga=2.10878772.183077179.1736784848-907468999.1707242973</li>
-<li>The icons used were sourced from <a href="https://www.flaticon.com/">flaticons.com</a></li>
-</ul>
-<p>step 4: Using jupyter IDE, I launched anaconda prompt after installing all the necessary libraries/packages and ran the command &ldquo;tabpy&rdquo; this will start listening to the port as seen below</p>
+<p>The icons used were sourced from <a href="https://www.flaticon.com/">flaticons.com</a></p>
+<p>Step 4: Using jupyter IDE, I launched anaconda prompt after installing all the necessary libraries/packages and ran the command &ldquo;tabpy&rdquo; this will start listening to the port as seen below</p>
 <p><img alt="image" loading="lazy" src="/img/Anaconda_cmd.png#center"></p>
-<p>Step 5: Launch tableau, depending on the version you are using, hover on help, Go to Settings → Extensions and input parameters as seen below then click the test connection button</p>
+<p>Step 5: Launch tableau, depending on the version you are using, hover on help, go to Settings and performance → Manage Analytics Extensions connection.. and input parameters as seen below then click the test connection button.</p>
 <p><img alt="image" loading="lazy" src="/img/Analytics_ext.png#center"></p>
-<p>step 6: Connect to the trained data source and write the script for the analysis. The tableau script for Death and survival prediction was written as in the image below :</p>
+<p>Step 6: Connect to the trained data source and write the script for the analysis. The tableau script for Death and survival prediction was written as in the image below :</p>
 <p><img alt="image" loading="lazy" src="/img/Death.png#center"></p>
 <p><img alt="image" loading="lazy" src="/img/Survival.png#center"></p>
-<p>This is the simple dashboard draft :</p>
-<p><img alt="image" loading="lazy" src="/img/Titanic_dashboard.jpg#center"></p>
-<p>Here is also a short display of how the dashboard functions while in use</p>
+<p>The simple dashboard draft can  be accessed <a href="/files/Titanic.twbx">here</a></p>
+<p>This is also a short display of how the dashboard functions while in use</p>
 <div style="text-align:center;">
   <video controls width="720">
-    <source src="/videos/Titanic-Pres.mp4" type="video/mp4">
+    <source src="/videos/Titanic.mp4" type="video/mp4">
     Functionality of the dashboard
   </video>
 </div>
@@ -341,18 +516,23 @@ You can access the datasource here - [Titanic](https://www.kaggle.com/c/titanic)
       <li><a href="//localhost:1313/tags/python/">Python</a></li>
     </ul>
 <nav class="paginav">
-  <a class="next" href="//localhost:1313/posts/second/">
-    <span class="title">Next »</span>
+  <a class="prev" href="//localhost:1313/posts/second/">
+    <span class="title">« Prev</span>
     <br>
     <span>GA to Snowflake</span>
+  </a>
+  <a class="next" href="//localhost:1313/archives/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Archives</span>
   </a>
 </nav>
 
 
 <ul class="share-buttons">
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share First on x"
-            href="https://x.com/intent/tweet/?text=First&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f&amp;hashtags=Tableau%2cMachineLearning%2cTabPy%2cPython">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Python to Tabpy - Tableau on x"
+            href="https://x.com/intent/tweet/?text=Python%20to%20Tabpy%20-%20Tableau&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f&amp;hashtags=Tableau%2cMachineLearning%2cTabPy%2cPython">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -360,8 +540,8 @@ You can access the datasource here - [Titanic](https://www.kaggle.com/c/titanic)
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share First on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f&amp;title=First&amp;summary=First&amp;source=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Python to Tabpy - Tableau on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f&amp;title=Python%20to%20Tabpy%20-%20Tableau&amp;summary=Python%20to%20Tabpy%20-%20Tableau&amp;source=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -369,8 +549,8 @@ You can access the datasource here - [Titanic](https://www.kaggle.com/c/titanic)
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share First on reddit"
-            href="https://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f&title=First">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Python to Tabpy - Tableau on reddit"
+            href="https://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f&title=Python%20to%20Tabpy%20-%20Tableau">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -378,7 +558,7 @@ You can access the datasource here - [Titanic](https://www.kaggle.com/c/titanic)
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share First on facebook"
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Python to Tabpy - Tableau on facebook"
             href="https://facebook.com/sharer/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
@@ -387,8 +567,8 @@ You can access the datasource here - [Titanic](https://www.kaggle.com/c/titanic)
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share First on whatsapp"
-            href="https://api.whatsapp.com/send?text=First%20-%20%2f%2flocalhost%3a1313%2fposts%2ffirst%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Python to Tabpy - Tableau on whatsapp"
+            href="https://api.whatsapp.com/send?text=Python%20to%20Tabpy%20-%20Tableau%20-%20%2f%2flocalhost%3a1313%2fposts%2ffirst%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -396,8 +576,8 @@ You can access the datasource here - [Titanic](https://www.kaggle.com/c/titanic)
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share First on telegram"
-            href="https://telegram.me/share/url?text=First&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Python to Tabpy - Tableau on telegram"
+            href="https://telegram.me/share/url?text=Python%20to%20Tabpy%20-%20Tableau&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -405,8 +585,8 @@ You can access the datasource here - [Titanic](https://www.kaggle.com/c/titanic)
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share First on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=First&u=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Python to Tabpy - Tableau on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Python%20to%20Tabpy%20-%20Tableau&u=%2f%2flocalhost%3a1313%2fposts%2ffirst%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path

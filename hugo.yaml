@@ -24,6 +24,7 @@ params:
   cover:
     linkFullImages: true
   
+  math: true 
   ShowBreadCrumbs: true
   ShowReadingTime: true
   ShowShareButtons: true
@@ -79,11 +80,11 @@ markup:
     lineNos: true
     lineNumbersInTable: true
     noClasses: false
-    style: fruity #monokai
+    style: monokai #fruity
     # tabWidth: 4
     wrapperClass: highlight
   goldmark:
     renderer:
       unsafe: true
 security:
-  enableInlineShortcodes: true      
+  enableInlineShortcodes: true     

@@ -9,17 +9,17 @@
     <lastBuildDate>Mon, 26 May 2025 09:45:55 -0700</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First</title>
-      <link>//localhost:1313/posts/first/</link>
-      <pubDate>Thu, 13 Feb 2025 12:28:23 -0800</pubDate>
-      <guid>//localhost:1313/posts/first/</guid>
-      <description>Omo Portfolio description</description>
-    </item>
-    <item>
       <title>GA to Snowflake</title>
       <link>//localhost:1313/posts/second/</link>
       <pubDate>Thu, 13 Feb 2025 12:28:23 -0800</pubDate>
       <guid>//localhost:1313/posts/second/</guid>
+      <description>The requirement(s) was to build an Ecommerce dashboard with data sources from Shopify, Google Analytics, and local database.</description>
+    </item>
+    <item>
+      <title>Python to Tabpy - Tableau</title>
+      <link>//localhost:1313/posts/first/</link>
+      <pubDate>Thu, 13 Feb 2025 12:28:23 -0800</pubDate>
+      <guid>//localhost:1313/posts/first/</guid>
       <description>Omo Portfolio description</description>
     </item>
   </channel>
